@@ -29,7 +29,6 @@ final class LoginView: UIView {
         let button = UIButton(type: .system)
         button.setTitle(Constants.enter, for: .normal)
         button.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside)
-        button.layer.cornerRadius = Constants.cornerRadius
         return button
     }()
 
@@ -42,6 +41,7 @@ final class LoginView: UIView {
         backgroundColor = .systemBackground
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -73,6 +73,7 @@ final class LoginView: UIView {
             make.centerX.equalToSuperview()
             make.leading.equalToSuperview().offset(Constants.textfieldVertical)
             make.trailing.equalToSuperview().inset(Constants.textfieldVertical)
+            make.height.equalTo(Constants.textFieldHeight)
         }
 
         passwordTextField.snp.makeConstraints { make in
@@ -80,7 +81,9 @@ final class LoginView: UIView {
             make.centerX.equalToSuperview()
             make.leading.equalToSuperview().offset(Constants.textfieldVertical)
             make.trailing.equalToSuperview().inset(Constants.textfieldVertical)
+            make.height.equalTo(Constants.textFieldHeight)
         }
+
         loginButton.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(Constants.topOffset)
             make.centerX.equalToSuperview()
@@ -96,12 +99,6 @@ extension LoginView {
         textField.placeholder = placeholder
         textField.isSecureTextEntry = isSecure
         textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = Constants.cornerRadius
-        
-        textField.snp.makeConstraints { make in
-        make.height.equalTo(Constants.textFieldHeight)
-        }
-        
         return textField
     }
 }
@@ -113,7 +110,6 @@ extension LoginView {
         static let topOffset: CGFloat = 20
         static let textfieldVertical: CGFloat = 70
         static let passwordTextFieldTopOffset: CGFloat = 10
-        static let cornerRadius: CGFloat = 20
 
         static let login: String = "Логин"
         static let auth: String = "Авторизация"
