@@ -40,6 +40,8 @@ class CellView: UITableViewCell {
 
     private func makeConstraints() {
         photoImageView.snp.makeConstraints { make in
+            make.top.greaterThanOrEqualTo(contentView.snp.top).offset(Constatns.verticalOffset)
+            make.bottom.lessThanOrEqualTo(contentView.snp.bottom).inset(Constatns.verticalOffset)
             make.leading.equalTo(contentView.snp.leading).offset(Constatns.verticalOffset)
             make.centerY.equalTo(contentView.snp.centerY)
             make.width.height.equalTo(Constatns.photosSize)
