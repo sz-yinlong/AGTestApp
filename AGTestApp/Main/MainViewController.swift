@@ -45,13 +45,14 @@ final class MainViewController: UITableViewController {
             fatalError("PhotoCell not found")
         }
         let photo = viewModel.photos[indexPath.row]
-        cell.configure(with: photo)
+        viewModel.configureCell(cell, at: indexPath)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let photo = viewModel.photos[indexPath.row]
         let detailVC = DetailsViewController()
+        detailVC.viewModel = viewModel
         detailVC.photo = photo
         navigationController?.pushViewController(detailVC, animated: true)
     }

@@ -8,13 +8,13 @@
 import UIKit
 
 class CellView: UITableViewCell {
-    private let titleLabel: UILabel = {
+     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         return label
     }()
 
-    private let photoImageView: UIImageView = {
+     let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -51,15 +51,6 @@ class CellView: UITableViewCell {
             make.leading.equalTo(photoImageView.snp.trailing).offset(Constatns.verticalOffset)
             make.trailing.equalTo(contentView.snp.trailing).inset(Constatns.verticalOffset)
             make.centerY.equalTo(contentView.snp.centerY)
-        }
-    }
-
-    func configure(with photo: Photo) {
-        titleLabel.text = photo.title
-        NetworkManager.shared.downloadImage(from: photo.url) { [weak self] image in
-            DispatchQueue.main.async {
-                self?.photoImageView.image = image
-            }
         }
     }
 }

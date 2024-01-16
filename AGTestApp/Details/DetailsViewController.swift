@@ -9,6 +9,7 @@ import UIKit
 
 class DetailsViewController: UIViewController {
     var photo: Photo?
+    var viewModel: ViewModel?
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -40,27 +41,31 @@ class DetailsViewController: UIViewController {
 
     private func makeConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
-            make.leading.equalTo(view.snp.leading).offset(20)
-            make.trailing.equalTo(view.snp.trailing).offset(-20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(Constants.defaultOffset)
+            make.leading.equalTo(view.snp.leading).offset(Constants.defaultOffset)
+            make.trailing.equalTo(view.snp.trailing).offset(Constants.defaultOffset)
         }
 
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
-            make.leading.equalTo(view.snp.leading).offset(20)
-            make.trailing.equalTo(view.snp.trailing).offset(-20)
-            make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+            make.top.equalTo(titleLabel.snp.bottom).offset(Constants.defaultOffset)
+            make.leading.equalTo(view.snp.leading).offset(Constants.defaultOffset)
+            make.trailing.equalTo(view.snp.trailing).inset(Constants.defaultOffset)
+            make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom).inset(Constants.defaultOffset)
         }
     }
 
     private func configureView() {
         titleLabel.text = photo?.title
-        if let urlString = photo?.url, let _ = URL(string: urlString) {
-            NetworkManager.shared.downloadImage(from: urlString) { [weak self] image in
-                DispatchQueue.main.async {
-                    self?.imageView.image = image
-                }
+        if let photo = photo {
+            viewModel?.fetchSinglePhoto(for: photo) { [weak self] image in
+                self?.imageView.image = image
             }
         }
+    }
+}
+
+private extension DetailsViewController {
+    enum Constants {
+        static let defaultOffset: CGFloat = 20
     }
 }
