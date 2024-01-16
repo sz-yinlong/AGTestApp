@@ -44,7 +44,7 @@ final class MainViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as? CellView else {
             fatalError("PhotoCell not found")
         }
-        let photo = viewModel.photos[indexPath.row]
+        let _ = viewModel.photos[indexPath.row]
         viewModel.configureCell(cell, at: indexPath)
         return cell
     }

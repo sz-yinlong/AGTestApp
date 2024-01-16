@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CellView: UITableViewCell {
+final class CellView: UITableViewCell {
      let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .headline)

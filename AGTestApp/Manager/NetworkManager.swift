@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class NetworkManager {
+final class NetworkManager {
     static let shared = NetworkManager()
     lazy var baseURL: URL? = URL(string: "https://jsonplaceholder.typicode.com")
 
