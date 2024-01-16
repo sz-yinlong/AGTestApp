@@ -70,6 +70,7 @@
 		AC3D8B372B5536DA00F3099D /* AGTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				ACCCF9662B564ECF009B6CA2 /* Cell */,
 				ACBB61CB2B5567AB006CF1D3 /* Details */,
 				ACBB61CA2B5567A1006CF1D3 /* Main */,
 				ACBB61C92B556790006CF1D3 /* Login */,
@@ -128,7 +129,6 @@
 		ACBB61CA2B5567A1006CF1D3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				ACBB61BF2B5557A9006CF1D3 /* CellView.swift */,
 				AC3D8B3C2B5536DA00F3099D /* MainViewController.swift */,
 			);
 			path = Main;
@@ -140,6 +140,14 @@
 				ACBB61C12B556429006CF1D3 /* DetailsViewController.swift */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		ACCCF9662B564ECF009B6CA2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ACBB61BF2B5557A9006CF1D3 /* CellView.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
